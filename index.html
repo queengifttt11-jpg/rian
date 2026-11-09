@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>maafyayu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(
+180deg,
+#d9f3ff 0%,
+#8fd3ff 35%,
+#4fa8e8 70%,
+#1d6fb8 100%
+);
+overflow:hidden;
+height:100vh;
+position:relative;
+}
+
+/* HALAMAN */
+
+.page{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100dvh;
+padding:25px;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+z-index:10;
+
+opacity:0;
+transform:translateY(30px);
+transition:.5s;
+}
+
+.page.active{
+display:flex;
+opacity:1;
+transform:translateY(0);
+}
+
+/* JUDUL */
+
+.title{
+font-family:'Dancing Script',cursive;
+font-size:3rem;
+color:white;
+margin-bottom:15px;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.4),
+0 0 20px rgba(255,255,255,.2);
+}
+
+/* TEKS */
+
+.text{
+max-width:350px;
+line-height:1.8;
+font-size:1rem;
+color:white;
+}
+
+/* GAMBAR */
+
+.img-box img{
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:20px;
+padding:8px;
+background:white;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+margin-bottom:20px;
+}
+
+/* BUTTON */
+
+.btn-group{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+button{
+border:none;
+padding:14px 35px;
+border-radius:15px;
+background:#0e7cc7;
+color:white;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 8px 20px rgba(14,124,199,.35);
+}
+
+button:hover{
+background:#0964a3;
+}
+
+button:active{
+transform:scale(.95);
+}
+
+/* SURAT */
+
+.letter{
+width:95%;
+max-width:380px;
+
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.2);
+
+padding:25px;
+border-radius:20px;
+
+text-align:left;
+line-height:1.9;
+color:white;
+
+box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+/* EMOJI LAUT */
+
+.ocean{
+position:fixed;
+bottom:-100px;
+opacity:.35;
+pointer-events:none;
+animation:floatOcean linear infinite;
+z-index:1;
+}
+
+@keyframes floatOcean{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-120vh);
+}
+
+}
+
+/* GELOMBANG */
+
+.wave{
+position:fixed;
+bottom:0;
+left:0;
+width:200%;
+height:120px;
+background:rgba(255,255,255,.15);
+border-radius:45%;
+animation:waveMove 12s linear infinite;
+z-index:2;
+}
+
+.wave2{
+height:90px;
+opacity:.5;
+animation-duration:18s;
+}
+
+@keyframes waveMove{
+
+from{
+transform:translateX(0);
+}
+
+to{
+transform:translateX(-50%);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.title{
+font-size:2.6rem;
+}
+
+.text{
+font-size:.95rem;
+}
+
+.img-box img{
+width:150px;
+height:150px;
+}
+
+button{
+font-size:16px;
+padding:12px 30px;
+}
+
+}
+
+/* =========================
+   PAGE 4 - SCROLLABLE LETTER
+========================= */
+
+#page4 {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#page4 .letter {
+  width: min(90%, 600px);
+  max-height: 75vh;
+  margin: auto;
+  padding: 25px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bagian teks yang bisa di-scroll */
+#page4 .letter-content {
+  overflow-y: auto;
+  max-height: 60vh;
+
+  padding-right: 12px;
+
+  line-height: 1.8;
+  font-size: 15px;
+
+  text-align: left;
+
+  scrollbar-width: thin;
+}
+
+/* Jarak antar paragraf */
+#page4 .letter-content p {
+  margin: 0 0 20px 0;
+}
+
+/* Scrollbar Chrome / Edge */
+#page4 .letter-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+#page4 .letter-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#page4 .letter-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
+
+/* Tombol tetap di bawah */
+#page4 .continue-button {
+  text-align: center;
+  padding-top: 15px;
+  flex-shrink: 0;
+}
+
+#page4 .continue-button button {
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+
+  #page4 {
+    padding: 15px;
+  }
+
+  #page4 .letter {
+    width: 92%;
+    max-height: 78vh;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  #page4 .letter-content {
+    max-height: 62vh;
+    font-size: 14px;
+    line-height: 1.7;
+    padding-right: 10px;
+  }
+
+  #page4 .letter-content p {
+    margin-bottom: 18px;
+  }
+
+  #page4 .continue-button {
+    padding-top: 12px;
+  }
+}
+
+/* =========================
+   PAGE 5 - SCROLLABLE
+========================= */
+
+#page5 {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#page5 .letter {
+  width: min(90%, 600px);
+  max-height: 75vh;
+  margin: auto;
+  padding: 25px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Isi Page 5 bisa di-scroll */
+#page5 .letter-content {
+  overflow-y: auto;
+  max-height: 60vh;
+
+  padding-right: 12px;
+
+  line-height: 1.8;
+  font-size: 15px;
+
+  text-align: left;
+
+  scrollbar-width: thin;
+}
+
+/* Jarak antar paragraf */
+#page5 .letter-content p {
+  margin: 0 0 20px 0;
+}
+
+/* Scrollbar */
+#page5 .letter-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+#page5 .letter-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#page5 .letter-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+}
+
+/* Tombol tetap di bawah */
+#page5 .continue-button {
+  text-align: center;
+  padding-top: 15px;
+  flex-shrink: 0;
+}
+
+#page5 .continue-button button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE PAGE 5
+========================= */
+
+@media (max-width: 600px) {
+
+  #page5 {
+    padding: 15px;
+  }
+
+  #page5 .letter {
+    width: 92%;
+    max-height: 78vh;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  #page5 .letter-content {
+    max-height: 62vh;
+    font-size: 14px;
+    line-height: 1.7;
+    padding-right: 10px;
+  }
+
+  #page5 .letter-content p {
+    margin-bottom: 18px;
+  }
+
+  #page5 .continue-button {
+    padding-top: 12px;
+  }
+
+}
+
+/* =========================
+   PAGE 5 - SCROLLABLE
+========================= */
+
+#page5 {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#page5 .letter {
+  width: min(90%, 600px);
+  max-height: 75vh;
+  margin: auto;
+  padding: 25px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* BAGIAN TEKS YANG BISA DI-SCROLL */
+#page5 .letter-content {
+  overflow-y: auto;
+  max-height: 60vh;
+
+  padding-right: 12px;
+
+  text-align: left;
+  scrollbar-width: thin;
+}
+
+/* Supaya teks tetap mengikuti style .text */
+#page5 .letter-content .text {
+  max-width: none;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* Scrollbar Chrome / Edge */
+#page5 .letter-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+#page5 .letter-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#page5 .letter-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.5);
+  border-radius: 10px;
+}
+
+/* GAMBAR */
+#page5 .img-box {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+#page5 .img-box img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* TOMBOL TETAP DI BAWAH */
+#page5 .continue-button {
+  text-align: center;
+  padding-top: 15px;
+  flex-shrink: 0;
+}
+
+#page5 .continue-button button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  #page5 {
+    padding: 15px;
+  }
+
+  #page5 .letter {
+    width: 92%;
+    max-height: 78vh;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  #page5 .letter-content {
+    max-height: 62vh;
+    padding-right: 10px;
+  }
+
+  #page5 .letter-content .text {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  #page5 .img-box img {
+    width: 130px;
+    height: 130px;
+  }
+
+  #page5 .continue-button {
+    padding-top: 12px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- MUSIK -->
+
+<audio id="bgm" autoplay loop muted>
+<source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="page1">
+
+<div class="img-box">
+<img src="icon1.gif">
+</div>
+
+<button onclick="showPage('page2')">
+tap >
+</button>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<h1 class="title">
+Maaf, yayuu
+</h1>
+
+<p class="text">
+Sometimes we hurt the people we love the most.
+This page is a small way to say, I'm sorry.
+</p>
+
+<div class="btn-group">
+
+<button onclick="showPage('page3')">
+Yes
+</button>
+
+<button id="noBtn">
+No
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<p class="text">
+I know I made mistakes.
+I'm not perfect.
+But my feelings for you are real.
+</p>
+
+<button onclick="showPage('page4')">
+forgive me!!
+</button>
+
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+
+  <div class="letter">
+
+    <div class="letter-content">
+
+      <p>
+Selamat malam Yayu, maaf untuk semuanya. B mau chat, mau ketemu dari lama tapi b takut di lapor dan di rekam lagi. Mungkin sekarang Ayu su lebih bahagia dan lebih tenang. Bta cuma mau Ayu tau semua yg bta buat waktu itu karna bta sakit hati. Ayu tau bta di tempat kerja sementara ada masalah dan orang yg selama ini bta crita b pu masalah, b minta saran dan doa, satu-satunya tempat bt crita tentang smua b pu kehidupan, ternyata selingkuh, bachat dan post-post yang aneh2 untuk laki2 lain di saat bt berusaha susah payah untuk selalu ada untuk Ayu.
+</p>
+
+<p>
+Jujur bta sn bisa berpikir jernih le pada saat itu. B emosi dan sakit hati bercampur, akhirnya kluar kata2 yg buat Ayu sakit hati. Bt minta maaf.
+</p>
+
+<p>
+Dan untuk masalah yg skrg ini bta juga minta maaf. Bta ancam terkait vdio, meskipun itu b cuma omong saja, sn mungkin b sampe buat, karna ternyata Ayu crita ke Ayu punya kawan2 kalau selama ini bta yg rekam diam2 dan buat vdio, padahal tidak seperti itu adanya.
+</p>
+
+<p>
+Bta selama ini snd pernah mau buat susah Ayu dengan Ayu punya vn pukul2 kepala sambil ancam mau bunuh diri dan mau bunuh bt kalau bt snd datang kos. Sampe hari ini itu vn snd pernah sampai ke anggota yg urus masalah atau ka Dwi dan George, semua karna b sn mau Ayu malu dan memberatkan Ayu.
+</p>
+
+<p>
+Bta juga snd pernah ada niatan sama skali mau lapor Ayu atas apa yg bta terima selama pacaran dengan Ayu. Bta di pukul, di aniaya, bt tampung smua. Dlu ka George su suruh sampai tekan bt untuk kasi putus Ayu, tapi Ayu snd menyerah. Ayu masih fto tespek, Ayu pi mabuk, bt cari Ayu smua karna b sn mau Ayu susah.
+</p>
+
+<p>
+Bahkan saat buat surat pernyataan ju Ayu dan ka Dwi masih aniaya bta. Sampe ini hari sn ad yg tau. Bta su cape Ayu. Bta selama ini cuma dengar sa. Bt di panggil, di periksa, di marah, di tindak, bta terima semua. Bahkan b pu keluarga lebih berpihak ke Ayu, b pu mama sndiri sampe benci bt yu.
+</p>
+
+<p>
+Bta sadar bta salah, tapi apakah Ayu snd pernah jahat dengan bt ko Ayu? Tolong yu.
+</p>
+
+<p>
+Terlalu banyak alasan untuk bt juga buat laporan sama seperti Ayu, tapi bta snd ad niat sdkit pun untuk lapor/visum sampai hari ini. Bt snd ad niat sdkit pun mau buat susah hidup org yg bta syg.
+</p>
+
+<p>
+Bta tau Ayu selama ini usaha sndiri tanpa bantuan siapa pun, termasuk Ayu punya kaka sekalipun. Ayu perempuan hebat, bisa kuat berdiri sndiri selama ini. Bta cuma mau Ayu rasa Ayu jangan sendiri, makanya b selalu sempatkan waktu untuk ketemu setiap hari. Itu semua tulus.
+</p>
+
+<p>
+Ayu pernah blg jangan pernah dengar orang pu omongan, tapi di saat2 terakhir Ayu malah dengar org2 yg sn pernah ada buat Ayu dibanding bt yg stiap saat slalu ad dan usaha untuk Ayu.
+</p>
+
+<p>
+Bta su cukup buat Ayu menderita b rasa. B minta maaf waktu itu b sn bisa kontrol b pu diri dan b pu emosi. Skrg b su lebih tenang dan fokus ke b punya hidup.
+</p>
+
+<p>
+B harap Ayu rasa seperti apa srkg Ayu bisa sampaikan biar b tau bta harus perbaiki dengan cara apa Ayu.
+</p>
+
+<p>
+Maaf karna ternyata bt bukan laki2 dan pasangan yg baik. Bahkan bt bukan manusia yang baik. Bt sangat minta maaf karna ternyata selama pacaran snd prnah buat Ayu senang.
+</p>
+
+<p>
+Maaf karna di saat2 terakhir pacaran bt malah jdi driver dan ktg pu waktu berkurang. B sangat menyesali itu. Maaf juga karna yang bisa bta kasi cuma bt pu waktu stiap hari dan hal2 kecil selama ini.
+</p>
+
+<p>
+Yah mau bagaimana lagi Ayu. Bta juga snd sangka2 org yg selama ini bta syg dan bela depan b pu kluarga dan b pu kawan2 buat bta sampai bgini. Yah itu smua karna bta punya kebodohan.
+</p>
+
+<p>
+Rian sangat sangat sangat minta maaf untuk semuanya. Smbuanya bta punya salah. B mohon, apa yg harus b lakukan untuk bisa perbaiki smuanya, b mohon.
+</p>
+
+<p>
+Tolong jangan buat b susah di b pu kluarga dan di b pu pekerjaan yu. B minta tolong. Cuma Ayu yang tau ktg dua pung krmna2. Ka Dwi dan ka George snd tau apa2. Ayu cuma ktg yg tau ktg pu susah senang selama ini.🙏
+</p>
+
+
+    </div>
+
+    <div class="continue-button">
+      <button onclick="showPage('page5')">
+        Continue
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+
+  <div class="letter">
+
+    <div class="letter-content">
+
+      <p class="text">
+        Bt sangat sangat minta maaf. Yah, pada intinya waktu itu karna b
+        masih sangat sayang Ayu makanya bt seperti itu dan posisi b ada
+        dalam masalah di pekerjaan. Ayu tau sndiri jadi b stres, b takut
+        snd ad tempat crita, tempat minta tolong dan tempat yg buat b
+        tenang.
+      </p>
+
+      <p class="text" style="margin-top:15px;">
+        Skrg b sadar b harus lebih sayang b punya diri sndiri sperti Ayu
+        syg Ayu pu diri sndiri, makanya Ayu pilih lepas dari bta.
+        B mohon cuma Ayu yang bisa perbaiki ini semua.
+      </p>
+
+      <p class="text" style="margin-top:15px;">
+        Bta senang bisa minta maaf langsung dan mengakui semua b pu
+        kesalahan. Ini buat b lebih tenang.
+      </p>
+
+      <p class="text" style="margin-top:15px;">
+        Tolong lebih bahagia lagi kedepannya Ayu. Snd boleh sendiri,
+        jangan trauma, jangan takut karna Ayu btuh orang untuk temani Ayu.
+      </p>
+
+      <p class="text" style="margin-top:15px;">
+        Masih banyak laki2 yg lebih baik di luar sana yang bisa jadi
+        safety place-nya Ayu. Tapi Ayu juga harus jadi lebih baik ya.
+      </p>
+
+      <p class="text" style="margin-top:15px;">
+        Maaf bta sudah gagal. 🙏😁
+      </p>
+
+    </div>
+
+    <div class="continue-button">
+      <button onclick="showPage('page6')">
+        Next
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+
+  <p class="text">
+   Maaf kalau kepanjangan , b harap yang baca ini masih ayu yang menjengkelkan yang tlp 24 jam tukang makan babi
+  </p>
+
+  <button onclick="showPage('page7')">
+   Next
+  </button>
+
+</div>
+
+<!-- PAGE 7 -->
+
+<div class="page" id="page7">
+
+  <p class="text">
+
+    Thank you for reading my apology.
+
+    Thank you for every smile.
+
+  </p>
+
+  <br>
+
+  <button onclick="showPage('page1')">
+    replay
+  </button>
+
+</div>
+
+
+
+<!-- GELOMBANG -->
+
+<div class="wave"></div>
+<div class="wave wave2"></div>
+
+<script>
+
+/* GANTI HALAMAN */
+
+function showPage(id){
+
+document.querySelectorAll('.page').forEach(page=>{
+page.classList.remove('active');
+});
+
+document.getElementById(id).classList.add('active');
+
+}
+
+/* TOMBOL NO KABUR */
+
+const noBtn =
+document.getElementById("noBtn");
+
+function moveButton(){
+
+const x =
+(Math.random()*220)-110;
+
+const y =
+(Math.random()*140)-70;
+
+noBtn.style.transform =
+`translate(${x}px,${y}px)`;
+
+}
+
+noBtn.addEventListener("mouseover",moveButton);
+noBtn.addEventListener("touchstart",moveButton);
+
+/* AUTOPLAY MOBILE */
+
+document.body.addEventListener('click',()=>{
+
+const music =
+document.getElementById('bgm');
+
+music.muted=false;
+music.play();
+
+},{once:true});
+
+/* EMOJI LAUT */
+
+const icons = [
+
+"🌊",
+"🐳",
+"🐬",
+"🐠",
+"🐟",
+"🐙",
+"🪼",
+"🐚",
+"⭐",
+"🫧"
+
+];
+
+for(let i=0;i<40;i++){
+
+const span =
+document.createElement("span");
+
+span.className="ocean";
+
+span.innerHTML =
+icons[Math.floor(Math.random()*icons.length)];
+
+span.style.left =
+Math.random()*100+"vw";
+
+span.style.fontSize =
+(20+Math.random()*20)+"px";
+
+span.style.animationDuration =
+(8+Math.random()*10)+"s";
+
+span.style.animationDelay =
+Math.random()*5+"s";
+
+document.body.appendChild(span);
+
+}
+
+</script>
+
+</body>
+</html>
